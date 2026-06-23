@@ -103,12 +103,6 @@
   .mobile-menu a:last-child { border-bottom: none; }
   .mobile-menu a:hover, .mobile-menu a.active { color: var(--gold); }
 
-  .page-header {
-    padding: 160px 60px 80px;
-    background: var(--cream-dark);
-    border-bottom: 1px solid rgba(26,71,49,0.1);
-  }
-
   .section-label {
     font-size: 11px; font-weight: 500;
     letter-spacing: 4px; text-transform: uppercase;
@@ -119,18 +113,19 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(36px, 4vw, 56px);
     font-weight: 600; color: var(--green); line-height: 1.1;
+    margin-bottom: 60px;
   }
 
   .section-title em { font-style: italic; }
 
-  #sparrers { padding: 100px 60px; background: var(--cream); }
+  #sparrers { padding: 140px 60px 100px; background: var(--cream); }
 
   .sparrers-grid {
     display: flex; justify-content: center; margin-top: 60px;
   }
 
   .sparrer-card {
-    width: 360px; background: var(--white); overflow: hidden;
+    width: 560px; background: var(--white); overflow: hidden;
     box-shadow: 0 4px 24px rgba(26,71,49,0.08);
     transition: transform 0.3s, box-shadow 0.3s;
     animation: fadeUp 1s 0.2s ease both;
@@ -141,7 +136,7 @@
     box-shadow: 0 20px 60px rgba(26,71,49,0.15);
   }
 
-  .sparrer-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+  .sparrer-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
 
   .sparrer-caption { padding: 28px 32px; background: var(--green); text-align: center; }
 
@@ -227,7 +222,7 @@
     .nav-hamburger { display: flex; }
     .page-header { padding: 120px 24px 60px; }
     #sparrers { padding: 80px 24px; }
-    .sparrer-card { width: 100%; max-width: 360px; }
+    .sparrer-card { width: 100%; max-width: 560px; }
     footer { grid-template-columns: 1fr 1fr; padding: 48px 24px; }
     footer .footer-logo { grid-column: 1 / -1; }
     .footer-bottom { flex-direction: column; gap: 16px; padding: 20px 24px; }
@@ -263,12 +258,9 @@
   <a href="/contact">Contact</a>
 </div>
 
-<div class="page-header">
-  <span class="section-label">The Team</span>
-  <h1 class="section-title">Our <em>sparrers</em></h1>
-</div>
-
 <section id="sparrers">
+  <span class="section-label" style="animation: fadeUp 1s ease both;">The Team</span>
+  <h2 class="section-title" style="animation: fadeUp 1s 0.15s ease both;">Our <em>sparrers</em></h2>
   <div class="sparrers-grid">
     <div class="sparrer-card">
       <img src="images/daniel justin.jpeg" alt="Sparrer" class="sparrer-photo">
