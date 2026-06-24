@@ -25,7 +25,7 @@
 
   nav {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 48px; left: 0; right: 0;
     z-index: 200;
     display: flex;
     justify-content: space-between;
@@ -103,6 +103,46 @@
   .mobile-menu a:last-child { border-bottom: none; }
   .mobile-menu a:hover, .mobile-menu a.active { color: var(--gold); }
 
+  .promo-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--gold);
+    color: #0f2a1c;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 300;
+    transition: background 0.2s;
+  }
+  .promo-banner:hover { background: #e6b800; color: #0f2a1c; }
+  .promo-banner .promo-tag {
+    background: #0f2a1c;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .promo-banner .promo-arrow { font-size: 16px; flex-shrink: 0; }
+  @media (max-width: 600px) {
+    .promo-banner { font-size: 13px; padding: 11px 16px; gap: 8px; }
+    .promo-banner .promo-tag { display: none; }
+  }
+
   .section-label {
     font-size: 11px; font-weight: 500;
     letter-spacing: 4px; text-transform: uppercase;
@@ -118,7 +158,7 @@
 
   .section-title em { font-style: italic; }
 
-  #sparrers { padding: 140px 60px 100px; background: var(--cream); text-align: center; }
+  #sparrers { padding: 188px 60px 100px; background: var(--cream); text-align: center; }
 
   .sparrers-grid {
     display: flex; justify-content: center; margin-top: 60px;
@@ -221,7 +261,7 @@
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
     .page-header { padding: 120px 24px 60px; }
-    #sparrers { padding: 120px 24px 80px; }
+    #sparrers { padding: 168px 24px 80px; }
     .sparrer-card { width: 100%; max-width: 560px; }
     footer { grid-template-columns: 1fr 1fr; padding: 48px 24px; }
     footer .footer-logo { grid-column: 1 / -1; }
@@ -255,6 +295,12 @@
   <a href="/sparrers" class="active">Sparrers</a>
   <a href="/contact">Contact</a>
 </div>
+
+<a href="https://wa.me/6589917741" class="promo-banner">
+  <span class="promo-tag">Limited Time</span>
+  <span>Limited time offer for first-timers: 40% off your trial sparring session! WhatsApp us to book your session now!</span>
+  <span class="promo-arrow">→</span>
+</a>
 
 <section id="sparrers">
   <span class="section-label" style="animation: fadeUp 1s ease both;">The Team</span>
