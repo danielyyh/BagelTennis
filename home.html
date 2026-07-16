@@ -997,9 +997,87 @@
     .promo-banner .promo-tag { display: none; }
   }
 
+  /* CROSS-PAGE TRANSITIONS */
+  @view-transition { navigation: auto; }
+  ::view-transition-old(root), ::view-transition-new(root) {
+    animation-duration: 0.32s;
+    animation-timing-function: cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* MICRO-INTERACTIONS */
+  .nav-links a { position: relative; }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 50%; right: 50%;
+    bottom: -6px;
+    height: 1.5px;
+    background: var(--gold);
+    transition: left 0.3s cubic-bezier(0.16,1,0.3,1), right 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  .nav-links a:hover::after, .nav-links a.active::after { left: 0; right: 0; }
+
+  .btn-primary, .btn-outline {
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+  .btn-primary:hover { box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+  .btn-primary:active, .btn-outline:active { transform: scale(0.96); }
+
+  .about-card, .who-card, .fee-card, .pillar, .sparrer-card {
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .about-card:hover { transform: translateY(-4px) scale(1.015); }
+  .who-card:hover { transform: translateY(-6px) scale(1.015); }
+  .fee-card:hover { transform: translateY(-4px) scale(1.01); }
+  .pillar { transition: background 0.3s, transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+  .pillar:hover { transform: translateY(-4px); }
+
+  .who-card .icon { transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+  .who-card:hover .icon { transform: scale(1.15) rotate(-6deg); }
+
+  .contact-btn { transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+  .contact-btn:hover { transform: translateY(-3px); }
+
+  .social-links a { transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+  .social-links a:hover { transform: translateY(-3px) rotate(-6deg); }
+
+  .whatsapp-float { animation: pulseGlow 2.4s ease-in-out infinite; }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 24px rgba(37,211,102,0.7), 0 0 0 8px rgba(37,211,102,0.12); }
+  }
+  .whatsapp-float:hover { animation-play-state: paused; }
+
+  .faq-item { transition: background 0.2s, transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+  .faq-item:hover { transform: translateX(4px); }
+
+  /* SCROLL REVEAL */
+  @media (prefers-reduced-motion: no-preference) {
+    .js-reveal-ready .reveal-group > *,
+    .js-reveal-ready .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .js-reveal-ready .reveal-group.in-view > *,
+    .js-reveal-ready .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-group > *:nth-child(2) { transition-delay: 0.08s; }
+    .reveal-group > *:nth-child(3) { transition-delay: 0.16s; }
+    .reveal-group > *:nth-child(4) { transition-delay: 0.24s; }
+    .reveal-group > *:nth-child(5) { transition-delay: 0.32s; }
+    .reveal-group > *:nth-child(6) { transition-delay: 0.4s; }
+    .reveal-group > *:nth-child(7) { transition-delay: 0.48s; }
+    .reveal-group > *:nth-child(8) { transition-delay: 0.56s; }
+    .reveal-group > *:nth-child(9) { transition-delay: 0.64s; }
+  }
+
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js-reveal-ready');</script>
 
 <nav>
   <div class="nav-logo">
@@ -1049,7 +1127,7 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="about-text">
+  <div class="about-text reveal-group">
     <span class="section-label">About Us</span>
     <h2 class="section-title" style="color:var(--cream)">Your game, <em>taken further</em></h2>
     <p>Bagel Tennis offers professional tennis sparring services. A smarter, more affordable way to sharpen your skills, improve your gameplay, and enjoy the sport you love.</p>
@@ -1057,7 +1135,7 @@
     <a href="/contact" class="btn-primary" style="margin-top: 12px; background: var(--gold); color: var(--green);">Book a Session</a>
     <a href="/sessions" class="btn-outline" style="margin-top: 12px;">View Sessions</a>
   </div>
-  <div class="about-cards">
+  <div class="about-cards reveal-group">
     <div class="about-card">
       <h4>Quality Hitting</h4>
       <p>Rally and practice fundamentals with experienced players who match your pace.</p>
@@ -1079,10 +1157,10 @@
 
 <!-- WHO -->
 <section id="who" style="padding: 100px 60px; background: var(--cream-dark);">
-  <div class="who-inner">
+  <div class="who-inner reveal-group">
     <span class="section-label">Who We're For</span>
     <h2 class="section-title">The right partner for <em>every player</em></h2>
-    <div class="who-grid">
+    <div class="who-grid reveal-group">
       <div class="who-card">
         <div class="icon"><i class="fa-solid fa-graduation-cap"></i></div>
         <h3>Young Players</h3>
@@ -1151,6 +1229,25 @@
 </a>
 
 <script>
+  // Scroll reveal
+  (function() {
+    const revealEls = document.querySelectorAll('.reveal, .reveal-group');
+    if (!revealEls.length) return;
+    if (!('IntersectionObserver' in window)) {
+      revealEls.forEach(el => el.classList.add('in-view'));
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => io.observe(el));
+  })();
+
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     if (window.scrollY > 20) {
